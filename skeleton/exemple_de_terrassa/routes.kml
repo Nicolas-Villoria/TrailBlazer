@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="727">
+        <Style id="732">
+            <LineStyle id="733">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="736">
+            <LineStyle id="737">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="740">
+            <LineStyle id="741">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="744">
+            <LineStyle id="745">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="748">
+            <LineStyle id="749">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="752">
+            <LineStyle id="753">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="756">
+            <LineStyle id="757">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="760">
+            <LineStyle id="761">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="764">
+            <LineStyle id="765">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="768">
+            <LineStyle id="769">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="772">
+            <LineStyle id="773">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="776">
+            <LineStyle id="777">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="780">
+            <LineStyle id="781">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="784">
+            <LineStyle id="785">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="788">
+            <LineStyle id="789">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="792">
+            <LineStyle id="793">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="796">
+            <LineStyle id="797">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="800">
+            <LineStyle id="801">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="804">
+            <LineStyle id="805">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="808">
+            <LineStyle id="809">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="812">
+            <LineStyle id="813">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="816">
+            <LineStyle id="817">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="820">
+            <LineStyle id="821">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="824">
+            <LineStyle id="825">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="828">
+            <LineStyle id="829">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="832">
+            <LineStyle id="833">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="836">
+            <LineStyle id="837">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="840">
+            <LineStyle id="841">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="844">
+            <LineStyle id="845">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="848">
+            <LineStyle id="849">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="852">
+            <LineStyle id="853">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="856">
+            <LineStyle id="857">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="860">
+            <LineStyle id="861">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="864">
+            <LineStyle id="865">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="868">
+            <LineStyle id="869">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="872">
+            <LineStyle id="873">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Placemark id="729">
+            <name>Origin-Point</name>
+            <Point id="728">
+                <coordinates>2.019111111111111,41.564611111111105,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="731">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#732</styleUrl>
+            <LineString id="730">
+                <coordinates>2.019111111111111,41.564611111111105,0.0 2.0229761787446505,41.56955539379458,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="735">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#736</styleUrl>
+            <LineString id="734">
+                <coordinates>2.019111111111111,41.564611111111105,0.0 2.01705788012987,41.5616656287013,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="739">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#740</styleUrl>
+            <LineString id="738">
+                <coordinates>2.0229761787446505,41.56955539379458,0.0 2.0256567380687094,41.58362189382544,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="743">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#744</styleUrl>
+            <LineString id="742">
+                <coordinates>2.0229761787446505,41.56955539379458,0.0 2.0356363680532445,41.566030549750415,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="747">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#748</styleUrl>
+            <LineString id="746">
+                <coordinates>2.0229761787446505,41.56955539379458,0.0 2.0184611111111113,41.566897222222224,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="751">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#752</styleUrl>
+            <LineString id="750">
+                <coordinates>2.0256567380687094,41.58362189382544,0.0 2.049681673076923,41.58434679690539,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="755">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#756</styleUrl>
+            <LineString id="754">
+                <coordinates>2.0256567380687094,41.58362189382544,0.0 2.020798596741986,41.59245473935891,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="759">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#760</styleUrl>
+            <LineString id="758">
+                <coordinates>2.049681673076923,41.58434679690539,0.0 2.0405444320735446,41.597182698672114,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="763">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#764</styleUrl>
+            <LineString id="762">
+                <coordinates>2.049681673076923,41.58434679690539,0.0 2.0636018771387143,41.58449608530691,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="767">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#768</styleUrl>
+            <LineString id="766">
+                <coordinates>2.0405444320735446,41.597182698672114,0.0 2.057307507713885,41.60407048106592,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="771">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#772</styleUrl>
+            <LineString id="770">
+                <coordinates>2.057307507713885,41.60407048106592,0.0 2.074527777777778,41.60575,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="775">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#776</styleUrl>
+            <LineString id="774">
+                <coordinates>2.057307507713885,41.60407048106592,0.0 2.072611111111111,41.60241666666667,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="779">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#780</styleUrl>
+            <LineString id="778">
+                <coordinates>2.0636018771387143,41.58449608530691,0.0 2.065722222222222,41.58708333333333,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="783">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#784</styleUrl>
+            <LineString id="782">
+                <coordinates>2.0636018771387143,41.58449608530691,0.0 2.067305555555556,41.583194444444445,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="787">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#788</styleUrl>
+            <LineString id="786">
+                <coordinates>2.0356363680532445,41.566030549750415,0.0 2.051629222452715,41.56658587596095,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="791">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#792</styleUrl>
+            <LineString id="790">
+                <coordinates>2.0356363680532445,41.566030549750415,0.0 2.029888888888889,41.56122222222222,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="795">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#796</styleUrl>
+            <LineString id="794">
+                <coordinates>2.0356363680532445,41.566030549750415,0.0 2.0412737285873193,41.552119383092325,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="799">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#800</styleUrl>
+            <LineString id="798">
+                <coordinates>2.051629222452715,41.56658587596095,0.0 2.0707352022727274,41.56656130573123,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="803">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#804</styleUrl>
+            <LineString id="802">
+                <coordinates>2.0707352022727274,41.56656130573123,0.0 2.0684722222222223,41.58078888888889,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="807">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#808</styleUrl>
+            <LineString id="806">
+                <coordinates>2.01705788012987,41.5616656287013,0.0 2.0110947604765816,41.54853426795398,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="811">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#812</styleUrl>
+            <LineString id="810">
+                <coordinates>2.0110947604765816,41.54853426795398,0.0 2.0191815552542374,41.54008751028248,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="815">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#816</styleUrl>
+            <LineString id="814">
+                <coordinates>2.0110947604765816,41.54853426795398,0.0 2.000283995898583,41.552870782550336,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="819">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#820</styleUrl>
+            <LineString id="818">
+                <coordinates>2.0191815552542374,41.54008751028248,0.0 2.0222256857384444,41.52762054177001,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="823">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#824</styleUrl>
+            <LineString id="822">
+                <coordinates>2.0191815552542374,41.54008751028248,0.0 2.0331801734735415,41.528530673337855,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="827">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#828</styleUrl>
+            <LineString id="826">
+                <coordinates>2.0222256857384444,41.52762054177001,0.0 2.0221388888888887,41.509055555555555,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="831">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#832</styleUrl>
+            <LineString id="830">
+                <coordinates>2.000283995898583,41.552870782550336,0.0 1.9897892085263158,41.558342360105264,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="835">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#836</styleUrl>
+            <LineString id="834">
+                <coordinates>1.9897892085263158,41.558342360105264,0.0 1.9800833333333334,41.56294444444444,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="839">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#840</styleUrl>
+            <LineString id="838">
+                <coordinates>1.9897892085263158,41.558342360105264,0.0 1.970138888888889,41.55274166666666,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="843">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#844</styleUrl>
+            <LineString id="842">
+                <coordinates>2.0331801734735415,41.528530673337855,0.0 2.0423651377978107,41.52506197907276,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="847">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#848</styleUrl>
+            <LineString id="846">
+                <coordinates>2.0423651377978107,41.52506197907276,0.0 2.046222222222222,41.51069444444445,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="851">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#852</styleUrl>
+            <LineString id="850">
+                <coordinates>2.020798596741986,41.59245473935891,0.0 2.0280207684230054,41.59626140437848,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="855">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#856</styleUrl>
+            <LineString id="854">
+                <coordinates>2.020798596741986,41.59245473935891,0.0 2.0156256877818564,41.60380732239119,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="859">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#860</styleUrl>
+            <LineString id="858">
+                <coordinates>2.0280207684230054,41.59626140437848,0.0 2.0277777777777777,41.589222222222226,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="863">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#864</styleUrl>
+            <LineString id="862">
+                <coordinates>2.0412737285873193,41.552119383092325,0.0 2.036,41.54463888888889,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="867">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#868</styleUrl>
+            <LineString id="866">
+                <coordinates>2.0156256877818564,41.60380732239119,0.0 2.0082252851914277,41.60545126780641,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="871">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#872</styleUrl>
+            <LineString id="870">
+                <coordinates>2.0082252851914277,41.60545126780641,0.0 2.0055833333333335,41.60925,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="875">
+            <name>132. Castell de Castellar â€“ Castellar del VallÃ¨s / VallÃ¨s Occidental</name>
+            <description>Distància: 6 km.</description>
+            <Point id="874">
+                <coordinates>2.074527777777778,41.60575,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="877">
+            <name>500. Castell de Ribatallada â€“ Sabadell / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="876">
+                <coordinates>2.065722222222222,41.58708333333333,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="879">
+            <name>656. Castell de VallparadÃ­s â€“ Terrassa / VallÃ¨s Occidental</name>
+            <description>Distància: 0 km.</description>
+            <Point id="878">
+                <coordinates>2.019111111111111,41.564611111111105,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="881">
+            <name>75. Torre de ca nâ€™Ustrell â€“ Sabadell / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="880">
+                <coordinates>2.0684722222222223,41.58078888888889,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="883">
+            <name>115. Capella de Sant MuÃ§ â€“ RubÃ­ / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="882">
+                <coordinates>2.0221388888888887,41.509055555555555,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="885">
+            <name>190. Capella de Santa Maria de Toudell â€“ Viladecavalls / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="884">
+                <coordinates>1.9800833333333334,41.56294444444444,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="887">
+            <name>258. Ermita de Sant CristÃ²fol de Ca nâ€™Anglada â€“ Terrassa / VallÃ¨s Occidental</name>
+            <description>Distància: 3 km.</description>
+            <Point id="886">
+                <coordinates>2.029888888888889,41.56122222222222,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="889">
+            <name>264. Ermita de Sant Feliuet de Vilamilans â€“ Sant Quirze del VallÃ¨s / VallÃ¨s Occidental</name>
+            <description>Distància: 6 km.</description>
+            <Point id="888">
+                <coordinates>2.046222222222222,41.51069444444445,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="891">
+            <name>374. Ermita de Santa Magdalena de Puigbarral â€“ Terrassa / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="890">
+                <coordinates>2.0277777777777777,41.589222222222226,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="893">
+            <name>378. Ermita de Santa Margarida del Mujal â€“ Terrassa / VallÃ¨s Occidental</name>
+            <description>Distància: 4 km.</description>
+            <Point id="892">
+                <coordinates>2.036,41.54463888888889,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="895">
+            <name>8. Antiga esglÃ©sia parroquial de Sant Esteve de Castellar Vell â€“ Castellar del VallÃ¨s / VallÃ¨s Occidental</name>
+            <description>Distància: 6 km.</description>
+            <Point id="894">
+                <coordinates>2.072611111111111,41.60241666666667,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="897">
+            <name>297. EsglÃ©sia de Sant Joan Baptista â€“ Matadepera / VallÃ¨s Occidental</name>
+            <description>Distància: 6 km.</description>
+            <Point id="896">
+                <coordinates>2.0055833333333335,41.60925,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="899">
+            <name>478. EsglÃ©sia de Sant Miquel de Toudell â€“ Viladecavalls / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="898">
+                <coordinates>1.970138888888889,41.55274166666666,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="901">
+            <name>1008. EsglÃ©sia parroquial de Sant JuliÃ  dâ€™Altura â€“ Sabadell / VallÃ¨s Occidental</name>
+            <description>Distància: 5 km.</description>
+            <Point id="900">
+                <coordinates>2.067305555555556,41.583194444444445,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="903">
+            <name>1183. EsglÃ©sies de Sant Pere de Terrassa / VallÃ¨s Occidental</name>
+            <description>Distància: 2 km.</description>
+            <Point id="902">
+                <coordinates>2.0184611111111113,41.566897222222224,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>
