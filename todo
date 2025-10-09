@@ -1,0 +1,49 @@
+3. Blocking I/O and CPU work
+
+Your background task runs heavy computations (get_segments, make_graph, etc.), which are CPU-bound and blocking.
+
+Since FastAPI runs on asyncio, long CPU-bound work will block other requests if not offloaded.
+
+✔️ Suggestion: Run heavy jobs in a separate process/thread (concurrent.futures.ThreadPoolExecutor or Celery/RQ + Redis).
+
+6. Response models
+
+Some endpoints return raw dicts instead of Pydantic models.
+
+✔️ Suggestion: Define ResponseModel classes to enforce consistent schema. For example:
+
+class MonumentResponse(BaseModel):
+    name: str
+    location: PointModel
+
+7. Endpoint structure
+
+Right now /monuments/{monument_type} is a POST, but it looks like a GET with query parameters.
+
+✔️ Suggestion: use GET /monuments?type=militars&lat=... for filtering.
+
+Reserve POST for creating resources.
+
+8. Graph and haversine
+from haversine import haversine
+
+
+Iterating all nodes to find closest is O(N) each time. For big graphs this will be slow.
+
+✔️ Suggestion: Use a spatial index (e.g., scipy.spatial.KDTree) to speed up nearest-node lookup.
+
+9. Code organization
+
+Everything is in main.py. It works, but scaling will be tough.
+
+✔️ Suggestion:
+
+Split into modules: routers/monuments.py, routers/routes.py, routers/segments.py.
+
+Use APIRouter() instead of @app.
+
+
+**Database Location**: Consider placing `jobs.db` in a persistent volume
+2. **Backup**: Regular backups of the jobs database
+3. **Monitoring**: Set up alerts for failed jobs using the stats endpoint
+4. **Cleanup**: Schedule regular cleanup of old jobs (default: 7 days)
