@@ -33,19 +33,19 @@ def main():
     """Start the HTTP server"""
     with socketserver.TCPServer(("", PORT), CORSRequestHandler) as httpd:
         print("=" * 60)
-        print("🌐 TrailBlazer Frontend Server")
+        print("TrailBlazer Frontend Server")
         print("=" * 60)
-        print(f"📂 Serving: {DIRECTORY}")
-        print(f"🔗 URL: http://localhost:{PORT}")
-        print(f"📄 Open: http://localhost:{PORT}/index.html")
+        print(f"Serving: {DIRECTORY}")
+        print(f"URL: http://localhost:{PORT}")
+        print(f"Open: http://localhost:{PORT}/index.html")
         print("=" * 60)
-        print("✅ Server is running. Press Ctrl+C to stop.")
+        print("Server is running. Press Ctrl+C to stop.")
         print()
         
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\n\n👋 Server stopped")
+            print("\n\nServer stopped")
 
 
 if __name__ == "__main__":

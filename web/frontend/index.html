@@ -16,106 +16,181 @@
     
     <style>
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
+            --primary: #00796B;
+            --secondary: #558b2fd0;
+            --accent: #FFC107;
+            --surface-light: #F5F5F5;
+            --surface-dark: #263238;
             --success: #56ab2f;
             --danger: #dc3545;
             --warning: #ffc107;
         }
         
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            min-height: 100vh;
-            padding: 20px 0;
-        }
-        
-        .main-container {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 30px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #f0f0f0;
-        }
-        
-        .header h1 {
-            color: #2c3e50;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 2.5em;
-        }
-        
-        .header p {
-            color: #7f8c8d;
-            font-size: 1.2em;
+            overflow: hidden;
+            height: 100vh;
         }
         
         #map {
-            height: 600px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin-bottom: 30px;
-            border: 3px solid #e0e0e0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
         
         .control-panel {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 400px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .control-panel::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .control-panel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .control-panel::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        
+        .panel-header {
+            text-align: center;
+            padding-bottom: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .panel-header h1 {
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+        
+        .panel-header p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin: 0;
+        }
+        
+        .collapse-btn {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .collapse-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .control-panel.collapsed {
+            width: 70px;
+            height: 70px;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .control-panel.collapsed .panel-content {
+            display: none;
         }
         
         .control-section {
             margin-bottom: 20px;
+            background: rgba(248, 249, 250, 0.8);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .control-section h5 {
             color: #2c3e50;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            font-size: 1em;
         }
         
         .btn-custom {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             border: none;
-            border-radius: 25px;
-            padding: 12px 30px;
+            border-radius: 10px;
+            padding: 10px 20px;
             font-weight: 600;
+            font-size: 0.9em;
             color: white;
             transition: all 0.3s;
+            width: 100%;
         }
         
         .btn-custom:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background-color: var(--secondary);
             color: white;
         }
         
         .btn-success-custom {
-            background: linear-gradient(45deg, #56ab2f, #a8e6cf);
+            background: linear-gradient(45deg, var(--primary), #a8e6cf);
             border: none;
-            border-radius: 25px;
-            padding: 12px 30px;
+            border-radius: 10px;
+            padding: 10px 20px;
             font-weight: 600;
+            font-size: 0.9em;
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-success-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(86, 171, 47, 0.4);
             color: white;
         }
         
         .form-select, .form-control {
-            border-radius: 10px;
+            border-radius: 8px;
             border: 2px solid #dee2e6;
-            padding: 12px 15px;
+            padding: 8px 12px;
+            font-size: 0.9em;
             transition: all 0.3s;
         }
         
@@ -125,39 +200,41 @@
         }
         
         .progress {
-            height: 30px;
-            border-radius: 15px;
+            height: 25px;
+            border-radius: 12px;
             background-color: #e9ecef;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .progress-bar {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 15px;
+            border-radius: 12px;
             transition: width 0.6s ease;
+            font-size: 0.85em;
         }
         
         .monument-card {
             background: white;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            font-size: 0.9em;
         }
         
         .monument-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
         
         .status-badge {
             display: inline-block;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
             font-weight: 600;
-            margin: 5px;
+            margin: 3px;
         }
         
         .status-pending {
@@ -181,13 +258,16 @@
         }
         
         .download-btn {
-            padding: 15px 25px;
-            border-radius: 12px;
+            padding: 12px 20px;
+            border-radius: 10px;
             font-weight: 600;
+            font-size: 0.9em;
             text-decoration: none;
             display: inline-block;
-            margin: 10px 5px;
+            margin: 8px 0;
             transition: all 0.3s;
+            width: 100%;
+            text-align: center;
         }
         
         .download-btn:hover {
@@ -217,11 +297,17 @@
         }
         
         .info-box {
-            background: #e7f3ff;
+            background: rgba(231, 243, 255, 0.9);
             border-left: 4px solid var(--primary);
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
-            margin: 15px 0;
+            margin: 12px 0;
+            font-size: 0.9em;
+        }
+        
+        .info-box h6 {
+            margin-bottom: 8px;
+            font-size: 0.95em;
         }
         
         .loading-spinner {
@@ -240,151 +326,130 @@
     </style>
 </head>
 <body>
+    <!-- Full-screen Map Background -->
+    <div id="map"></div>
+    
     <!-- API Status Indicator -->
     <div id="apiStatus" class="api-status api-disconnected">
         <i class="fas fa-circle-notch fa-spin"></i> Connecting...
     </div>
 
-    <div class="container-fluid">
-        <div class="main-container">
+    <!-- Floating Control Panel -->
+    <div class="control-panel" id="controlPanel">
+        <div class="collapse-btn" onclick="togglePanel()">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <div class="panel-content">
             <!-- Header -->
-            <div class="header">
+            <div class="panel-header">
                 <h1><i class="fas fa-hiking"></i> TrailBlazer</h1>
-                <p>Discover the shortest routes to Catalunya's historical monuments</p>
+                <p>Discover routes to monuments</p>
             </div>
             
-            <!-- Map -->
-            <div id="map"></div>
+            <!-- Start Point Section -->
+            <div class="control-section">
+                <h5><i class="fas fa-map-marker-alt text-danger"></i> Start Point</h5>
+                <div class="row g-2 mb-2">
+                    <div class="col-6">
+                        <input type="number" class="form-control" id="startLat" 
+                               placeholder="Latitude" step="0.000001">
+                    </div>
+                    <div class="col-6">
+                        <input type="number" class="form-control" id="startLon" 
+                               placeholder="Longitude" step="0.000001">
+                    </div>
+                </div>
+                <button class="btn btn-custom mb-2" onclick="setCurrentLocation()">
+                    <i class="fas fa-location-crosshairs"></i> Use My Location
+                </button>
+                <small class="text-muted d-block text-center">
+                    <i class="fas fa-info-circle"></i> Or click on the map
+                </small>
+            </div>
             
-            <!-- Control Panel -->
-            <div class="control-panel">
-                <div class="row">
-                    <!-- Start Point Section -->
-                    <div class="col-md-6">
-                        <div class="control-section">
-                            <h5><i class="fas fa-map-marker-alt text-danger"></i> Start Point</h5>
-                            <div class="row g-2 mb-2">
-                                <div class="col-md-6">
-                                    <input type="number" class="form-control" id="startLat" 
-                                           placeholder="Latitude" step="0.000001">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="number" class="form-control" id="startLon" 
-                                           placeholder="Longitude" step="0.000001">
-                                </div>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-custom" onclick="setCurrentLocation()">
-                                    <i class="fas fa-location-crosshairs"></i> Use My Location
-                                </button>
-                                <small class="text-muted">
-                                    <i class="fas fa-info-circle"></i> Or click anywhere on the map
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Monument Type Section -->
-                    <div class="col-md-6">
-                        <div class="control-section">
-                            <h5><i class="fas fa-landmark text-warning"></i> Monument Type</h5>
-                            <select class="form-select mb-2" id="monumentType">
-                                <option value="">Select monument type...</option>
-                                <option value="militars">🏰 Military Buildings (Castles, Towers)</option>
-                                <option value="religiosos">⛪ Religious Buildings (Churches, Monasteries)</option>
-                                <option value="civils">🏛️ Civil Buildings (Palaces, Houses)</option>
-                            </select>
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-success-custom" onclick="previewMonuments()">
-                                    <i class="fas fa-eye"></i> Preview Monuments
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Action Buttons -->
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <div class="d-grid">
-                            <button class="btn btn-custom btn-lg" onclick="calculateRoutes()" 
-                                    style="font-size: 1.2em; padding: 15px;">
-                                <i class="fas fa-route"></i> Calculate Routes to Monuments
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <!-- Monument Type Section -->
+            <div class="control-section">
+                <h5><i class="fas fa-landmark text-warning"></i> Monument Type</h5>
+                <select class="form-select mb-2" id="monumentType">
+                    <option value="">Select type...</option>
+                    <option value="militars">🏰 Military (Castles)</option>
+                    <option value="religiosos">⛪ Religious (Churches)</option>
+                    <option value="civils">🏛️ Civil (Palaces)</option>
+                </select>
+                <button class="btn btn-success-custom" onclick="previewMonuments()">
+                    <i class="fas fa-eye"></i> Preview Monuments
+                </button>
+            </div>
+            
+            <!-- Calculate Button -->
+            <div class="control-section">
+                <button class="btn btn-custom" onclick="calculateRoutes()" 
+                        style="padding: 12px; font-size: 1em;">
+                    <i class="fas fa-route"></i> Calculate Routes
+                </button>
             </div>
             
             <!-- Progress Section -->
             <div id="progressSection" style="display: none;">
-                <div class="control-panel">
-                    <h5><i class="fas fa-spinner fa-spin"></i> Route Calculation in Progress</h5>
-                    <div class="info-box">
-                        <strong>Job ID:</strong> <code id="jobId">-</code>
+                <div class="control-section">
+                    <h5><i class="fas fa-spinner fa-spin"></i> Calculating Routes</h5>
+                    <div class="info-box" style="padding: 8px;">
+                        <small><strong>Job ID:</strong> <code id="jobId" style="font-size: 0.8em;">-</code></small>
                         <span id="jobStatus" class="status-badge status-pending">Pending</span>
                     </div>
-                    <div class="progress mb-3">
+                    <div class="progress mb-2">
                         <div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" 
                              role="progressbar" style="width: 0%">
                             <span id="progressText">0%</span>
                         </div>
                     </div>
-                    <p id="progressStatus" class="text-center" style="font-size: 1.1em;">
+                    <p id="progressStatus" class="text-center mb-0" style="font-size: 0.9em;">
                         <i class="fas fa-rocket"></i> Initializing...
                     </p>
-                    <div class="text-center">
-                        <small class="text-muted">
-                            <i class="fas fa-lightbulb"></i> This may take a few minutes depending on the area size
-                        </small>
-                    </div>
                 </div>
             </div>
             
             <!-- Results Section -->
             <div id="resultsSection" style="display: none;">
-                <div class="control-panel">
-                    <h5><i class="fas fa-flag-checkered"></i> Route Results</h5>
+                <div class="control-section">
+                    <h5><i class="fas fa-flag-checkered"></i> Results</h5>
                     
-                    <div class="row mb-4">
-                        <div class="col-md-6">
-                            <div class="info-box">
-                                <h6><i class="fas fa-check-circle text-success"></i> Reachable Monuments</h6>
-                                <h3 id="reachableCount" class="mb-0">0</h3>
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <div class="info-box" style="padding: 8px; text-align: center;">
+                                <small class="d-block"><i class="fas fa-check-circle text-success"></i> Reachable</small>
+                                <strong id="reachableCount" style="font-size: 1.3em;">0</strong>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="info-box" style="background: #fff3cd; border-left-color: var(--warning);">
-                                <h6><i class="fas fa-exclamation-triangle text-warning"></i> Unreachable Monuments</h6>
-                                <h3 id="unreachableCount" class="mb-0">0</h3>
+                        <div class="col-6">
+                            <div class="info-box" style="background: rgba(255, 243, 205, 0.9); padding: 8px; text-align: center;">
+                                <small class="d-block"><i class="fas fa-times-circle text-warning"></i> Unreachable</small>
+                                <strong id="unreachableCount" style="font-size: 1.3em;">0</strong>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="row mb-3">
-                        <div class="col-md-6 text-center">
-                            <a id="downloadPNG" class="download-btn btn btn-primary btn-lg" href="#" target="_blank">
-                                <i class="fas fa-image"></i> Download PNG Map
-                            </a>
-                        </div>
-                        <div class="col-md-6 text-center">
-                            <a id="downloadKML" class="download-btn btn btn-success btn-lg" href="#" target="_blank">
-                                <i class="fas fa-map"></i> Download KML File
-                            </a>
-                        </div>
-                    </div>
+                    <a id="downloadPNG" class="download-btn btn btn-primary" href="#" target="_blank">
+                        <i class="fas fa-image"></i> Download PNG Map
+                    </a>
+                    <a id="downloadKML" class="download-btn btn btn-success" href="#" target="_blank">
+                        <i class="fas fa-map"></i> Download KML File
+                    </a>
                     
-                    <h6><i class="fas fa-list"></i> Route Details</h6>
-                    <div id="routeDetails" style="max-height: 400px; overflow-y: auto;"></div>
+                    <h6 style="margin-top: 15px; font-size: 0.95em;"><i class="fas fa-list"></i> Route Details</h6>
+                    <div id="routeDetails" style="max-height: 300px; overflow-y: auto;"></div>
                 </div>
             </div>
             
             <!-- Monuments Preview Section -->
             <div id="monumentsSection" style="display: none;">
-                <div class="control-panel">
-                    <h5><i class="fas fa-landmark"></i> Monuments in Area</h5>
-                    <p class="text-muted">Found <strong id="monumentCount">0</strong> monuments</p>
-                    <div id="monumentsList" style="max-height: 300px; overflow-y: auto;"></div>
+                <div class="control-section">
+                    <h5><i class="fas fa-landmark"></i> Monuments</h5>
+                    <p class="text-muted mb-2" style="font-size: 0.9em;">
+                        Found <strong id="monumentCount">0</strong> monuments
+                    </p>
+                    <div id="monumentsList" style="max-height: 250px; overflow-y: auto;"></div>
                 </div>
             </div>
         </div>
@@ -413,10 +478,31 @@
             await checkAPIConnection();
         });
         
+        // Toggle control panel
+        function togglePanel() {
+            const panel = document.getElementById('controlPanel');
+            const btn = panel.querySelector('.collapse-btn i');
+            
+            if (panel.classList.contains('collapsed')) {
+                panel.classList.remove('collapsed');
+                btn.className = 'fas fa-bars';
+            } else {
+                panel.classList.add('collapsed');
+                btn.className = 'fas fa-chevron-right';
+            }
+        }
+        
         // Initialize Leaflet map
         function initMap() {
-            // Center on Catalunya
-            map = L.map('map').setView([41.5, 1.5], 8);
+            // Center on Catalunya with zoom controls in bottom right
+            map = L.map('map', {
+                zoomControl: false  // Disable default zoom control
+            }).setView([41.5, 1.5], 8);
+            
+            // Add zoom control to bottom right
+            L.control.zoom({
+                position: 'bottomright'
+            }).addTo(map);
             
             // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
