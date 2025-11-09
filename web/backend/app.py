@@ -8,8 +8,7 @@ from fastapi.staticfiles import StaticFiles
 from core.config import API_CONFIG, STATIC_DIR, DATABASE_CONFIG
 from core.utils import get_logger
 from database.jobs import JobStorage
-from routers import monuments
-# from routers import routes, segments  # Will add these as we create them
+from routers import monuments, routes, segments
 
 # Initialize logger
 logger = get_logger("main")
@@ -38,8 +37,8 @@ job_storage = JobStorage(DATABASE_CONFIG["jobs_db_path"])
 
 # Include routers
 app.include_router(monuments.router, tags=["monuments"])
-# app.include_router(routes.router, tags=["routes"])       # Will add
-# app.include_router(segments.router, tags=["segments"])   # Will add
+app.include_router(routes.router, tags=["routes"])
+app.include_router(segments.router, tags=["segments"])
 
 
 @app.get("/")
