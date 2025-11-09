@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="15">
+        <Style id="20">
+            <LineStyle id="21">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="24">
+            <LineStyle id="25">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="28">
+            <LineStyle id="29">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="32">
+            <LineStyle id="33">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="36">
+            <LineStyle id="37">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="40">
+            <LineStyle id="41">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="44">
+            <LineStyle id="45">
+                <color>ff0000ff</color>
+                <colorMode>normal</colorMode>
+                <width>4</width>
+            </LineStyle>
+        </Style>
+        <Style id="50">
+            <IconStyle id="51">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="52">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="55">
+            <IconStyle id="56">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="57">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="60">
+            <IconStyle id="61">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="62">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="65">
+            <IconStyle id="66">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="67">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="70">
+            <IconStyle id="71">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="72">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="75">
+            <IconStyle id="76">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="77">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="80">
+            <IconStyle id="81">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="82">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="85">
+            <IconStyle id="86">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="87">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Style id="90">
+            <IconStyle id="91">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="92">
+                    <href>https://maps.google.com/mapfiles/kml/pal3/icon33.png</href>
+                </Icon>
+            </IconStyle>
+        </Style>
+        <Placemark id="17">
+            <name>Punt d'Origen</name>
+            <Point id="16">
+                <coordinates>2.1734,41.3851,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="19">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#20</styleUrl>
+            <LineString id="18">
+                <coordinates>2.173898650867052,41.383873368786126,0.0 2.1721406917630057,41.38252971604046,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="23">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#24</styleUrl>
+            <LineString id="22">
+                <coordinates>2.1721406917630057,41.38252971604046,0.0 2.171117223248731,41.38186955299492,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="27">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#28</styleUrl>
+            <LineString id="26">
+                <coordinates>2.171117223248731,41.38186955299492,0.0 2.1695427559701495,41.37883588432836,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="31">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#32</styleUrl>
+            <LineString id="30">
+                <coordinates>2.1695427559701495,41.37883588432836,0.0 2.1738259486206895,41.37563355103448,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="35">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#36</styleUrl>
+            <LineString id="34">
+                <coordinates>2.1738259486206895,41.37563355103448,0.0 2.1753886122448978,41.37407815646259,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="39">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#40</styleUrl>
+            <LineString id="38">
+                <coordinates>2.1753886122448978,41.37407815646259,0.0 2.1717992393939394,41.36632690606061,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="43">
+            <name>Camí</name>
+            <description>Camí entre dos punts</description>
+            <styleUrl>#44</styleUrl>
+            <LineString id="42">
+                <coordinates>2.1717992393939394,41.36632690606061,0.0 2.168616376,41.362094324,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="47">
+            <name>Castell de Montjuic</name>
+            <description>Distància: N/A km</description>
+            <Point id="46">
+                <coordinates>2.166111111111111,41.36333333333334,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="49">
+            <name>Castell de Cornellà</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#50</styleUrl>
+            <Point id="48">
+                <coordinates>2.0716666666666668,41.353611111111114,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="54">
+            <name>Torre Baldovina</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#55</styleUrl>
+            <Point id="53">
+                <coordinates>2.2094722222222223,41.44702777777778,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="59">
+            <name>Torre Negra</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#60</styleUrl>
+            <Point id="58">
+                <coordinates>2.1005555555555557,41.465,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="64">
+            <name>Torre Pallaresa</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#65</styleUrl>
+            <Point id="63">
+                <coordinates>2.2169444444444446,41.461111111111116,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="69">
+            <name>Torre Rodona</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#70</styleUrl>
+            <Point id="68">
+                <coordinates>2.1236111111111113,41.38583333333333,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="74">
+            <name>Torre Sobirana</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#75</styleUrl>
+            <Point id="73">
+                <coordinates>2.1466666666666665,41.43888888888888,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="79">
+            <name>Torre de la Penya del Moro</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#80</styleUrl>
+            <Point id="78">
+                <coordinates>2.068611111111111,41.39666666666667,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="84">
+            <name>Torre de la Talaia</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#85</styleUrl>
+            <Point id="83">
+                <coordinates>2.097611111111111,41.36022222222223,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="89">
+            <name>Torre del Baró</name>
+            <description>No hi ha camí possible.</description>
+            <styleUrl>#90</styleUrl>
+            <Point id="88">
+                <coordinates>2.176111111111111,41.45055555555556,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

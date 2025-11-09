@@ -1,19 +1,19 @@
-# TrailBlazer 🗺️
+# TrailBlazer 
 
-> Discover the shortest routes to Catalunya's historical monuments
+A trailblazer is someone who marks a trail through unexplored territory. In the spirit of these pioneers, you are about to start a journey through the beautiful lands of our country. Our application, TrailBlazer, will be your trusty guide, designed to help you uncover the shortest routes to our historical treasures. Whether you're a tourist eager to discover iconic monuments, a local seeking a rural adventure, or a history enthusiast, TrailBlazer is the perfect tool for you. So what are you waiting for? Start your adventure and become the pioneer of your own trail!
 
-**TrailBlazer** is a route-finding application that helps you explore Catalunya's historical treasures by calculating optimal paths through real trail networks. Whether you're a tourist, historian, or adventurer, TrailBlazer combines OpenStreetMap trail data with monument locations to plan your perfect journey.
+**TrailBlazer** is a route-finding application that started as a college project to explore graph algorithms and geospatial data. From the original code, which can be found in the `skeleton/` directory, we are developing a modern web application with an interactive frontend and REST API backend. TrailBlazer combines real trail networks from OpenStreetMap with Catalunya's historical monument data to calculate optimal routes for explorers.
 
 ## ✨ Features
 
-- 🏰 **Monument Discovery**: Browse military, religious, and civil historical buildings across Catalunya
-- 🛤️ **Real Trail Networks**: Uses actual hiking trails from OpenStreetMap data
-- 📍 **Smart Routing**: Calculates shortest paths using Dijkstra's algorithm
-- 🗺️ **Visual Exports**: Download route maps as PNG images or KML files for GPS devices
-- 🌐 **Web Interface**: Interactive map-based UI (in development)
-- 💻 **CLI Tool**: Full-featured command-line interface
+- **Monument Discovery**: Browse military, religious, and civil historical buildings across Catalunya
+- **Real Trail Networks**: Uses actual hiking trails from OpenStreetMap data
+- **Smart Routing**: Calculates shortest paths using Dijkstra's algorithm
+- **Visual Exports**: Download route maps as PNG images or KML files for GPS devices
+- **Web Interface**: Interactive map-based UI (in development)
+- **CLI Tool**: Full-featured command-line interface
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -34,15 +34,41 @@
 
 ### Usage
 
-#### Web Application (Recommended - In Development)
+#### Web Application (Easiest!)
 
+**Start both backend and frontend servers:**
+
+```bash
+./start.sh
+```
+
+This will:
+- Start the backend API on port 8000
+- Start the frontend on port 3000
+- Automatically open your browser to http://localhost:3000
+
+**Stop all servers:**
+
+```bash
+./stop.sh
+```
+
+**Manual startup (alternative):**
+
+Terminal 1 (Backend):
 ```bash
 cd web/backend
 python3 app.py
 ```
 
+Terminal 2 (Frontend):
+```bash
+cd web/frontend
+python3 serve.py
+```
+
 Then open your browser to:
-- **Frontend**: http://localhost:3000 (serve `web/frontend/index.html`)
+- **Frontend**: http://localhost:3000
 - **API Docs**: http://localhost:8000/docs
 
 #### Command-Line Interface
@@ -58,7 +84,7 @@ Follow the interactive prompts to:
 3. Set your starting point
 4. Generate routes and export maps
 
-## 📦 Dependencies
+## Dependencies
 
 All required libraries are listed in `requirements.txt`:
 
@@ -69,7 +95,7 @@ All required libraries are listed in `requirements.txt`:
 - **CLI Interface**: `rich`
 - **Web API** (backend only): `fastapi`, `uvicorn`, `pydantic`
 
-## 🏗️ Architecture
+## Architecture
 
 TrailBlazer consists of two main components:
 
@@ -139,7 +165,7 @@ User Input → Segment Download → Graph Building → Route Calculation → Exp
    Point         (GPX)          (clustering)      Algorithm      Files
 ```
 
-## 🔧 Configuration
+## Configuration
 
 Settings are configured in `settings_file.json`:
 
@@ -157,7 +183,7 @@ Settings are configured in `settings_file.json`:
 - **Decrease `distance_delta`** for tighter trail connections
 - **Adjust `angle`** to control graph simplification (lower = more simplification)
 
-## 📊 Project Structure
+## Project Structure
 
 ```
 TrailBlazer/
@@ -167,7 +193,7 @@ TrailBlazer/
 ├── settings_file.json           # Configuration
 ├── todo                         # Development tasks
 │
-├── skeleton/                    # ✅ Core CLI application (Complete)
+├── skeleton/                    # Core CLI application (Complete)
 │   ├── main.py                  # CLI interface
 │   ├── segments.py              # Trail segment processing
 │   ├── monuments.py             # Monument data fetching
@@ -176,18 +202,18 @@ TrailBlazer/
 │   ├── viewer.py                # Export visualization
 │   └── settings_file.json       # CLI configuration
 │
-└── web/                         # 🚧 Web application (In Progress)
+└── web/                         # Web application (In Progress)
     ├── backend/
     │   ├── app.py               # FastAPI main application
     │   ├── requirements.txt     # Backend dependencies
-    │   ├── models/              # ✅ Pydantic data models
-    │   ├── routers/             # ⚠️ API endpoints (partial)
-    │   ├── services/            # ⚠️ Business logic (partial)
-    │   ├── database/            # ✅ SQLite storage
-    │   └── core/                # ✅ Config & utilities
+    │   ├── models/              # Pydantic data models
+    │   ├── routers/             # API endpoints (partial)
+    │   ├── services/            # Business logic (partial)
+    │   ├── database/            # SQLite storage
+    │   └── core/                # Config & utilities
     │
     └── frontend/
-        ├── index.html           # ✅ Interactive web UI
+        ├── index.html           #  Interactive web UI
         └── README.md            # Frontend documentation
 ```
 
@@ -235,22 +261,22 @@ TrailBlazer/
 - Includes monument names and distances
 - Color-coded routes
 
-## 🚧 Current Development Status
+## Current Development Status
 
-### ✅ Completed
+### Completed
 - Core CLI application (100%)
 - Web frontend UI (100%)
 - Backend infrastructure (models, database, config)
 - Monument endpoints (GET /monuments, GET /monument-types)
 
-### 🚧 In Progress
+### In Progress
 - Route service implementation
 - Segment service implementation
 - Graph service implementation
 - Routes API endpoints
 - Segments API endpoints
 
-### 📋 To Do
+### To Do
 - Complete service layer porting from skeleton
 - Implement async job processing for route calculation
 - Add file download endpoints
@@ -259,7 +285,7 @@ TrailBlazer/
 
 **See `PROJECT_OVERVIEW.md` for detailed completion plan.**
 
-## 🧪 Testing
+## Testing
 
 ### CLI Testing
 ```bash
@@ -287,7 +313,7 @@ curl "http://localhost:8000/monuments?monument_type=militars&bottom_left_lat=41.
 curl http://localhost:8000/health
 ```
 
-## 📝 API Documentation
+## API Documentation
 
 Once the backend is running, visit:
 - **Swagger UI**: http://localhost:8000/docs
@@ -310,7 +336,7 @@ Once the backend is running, visit:
 - `GET /routes/download/{job_id}/png` - Download PNG map
 - `GET /routes/download/{job_id}/kml` - Download KML file
 
-## 🤝 Contributing
+## Contributing
 
 This is an educational project for learning Python, web development, and graph algorithms.
 
@@ -321,17 +347,17 @@ This is an educational project for learning Python, web development, and graph a
 4. Test with Swagger UI at http://localhost:8000/docs
 5. Update documentation
 
-## 📄 License
+## License
 
 Educational project - Catalunya Monuments data sourced from public databases.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **OpenStreetMap** contributors for trail data
 - **Generalitat de Catalunya** for monument databases
 - Python community for excellent geospatial libraries
 
-## 📧 Support
+## Support
 
 For questions or issues:
 1. Check `PROJECT_OVERVIEW.md` for detailed documentation

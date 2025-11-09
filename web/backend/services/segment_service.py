@@ -52,22 +52,33 @@ class SegmentService:
                 self.time_delta = data.get("time_delta", 300)
                 self.distance_delta = data.get("distance_delta", 0.1)
                 self.n_clusters = data.get("n_clusters", 500)
+                self.max_download_pages = data.get("max_download_pages", 50)  # NEW: limit downloads
                 
             logger.info(f"Loaded settings: time_delta={self.time_delta}, "
-                       f"distance_delta={self.distance_delta}, n_clusters={self.n_clusters}")
+                       f"distance_delta={self.distance_delta}, n_clusters={self.n_clusters}, "
+                       f"max_download_pages={self.max_download_pages}")
         except Exception as e:
             logger.error(f"Error loading settings: {e}", exc_info=True)
             # Use defaults
             self.time_delta = 300
             self.distance_delta = 0.1
             self.n_clusters = 500
+            self.max_download_pages = 50  # Default limit
     
     def _get_directory_name(self, box: BoxModel) -> str:
         """Get directory name for a bounding box"""
         return f"{box.bottom_left.lat}_{box.bottom_left.lon}_{box.top_right.lat}_{box.top_right.lon}"
     
-    def _download_points(self, box: BoxModel, filename: str) -> None:
-        """Download all GPS points in the bounding box from OpenStreetMap"""
+    def _download_points(self, box: BoxModel, filename: str, max_pages: int = 50) -> None:
+        """
+        Download GPS points in the bounding box from OpenStreetMap.
+        
+        Args:
+            box: Bounding box
+            filename: Output filename
+            max_pages: Maximum number of pages to download (default 50 = ~50k points)
+                      Set to None for unlimited (dangerous!)
+        """
         box_str = f"{box.bottom_left.lon},{box.bottom_left.lat},{box.top_right.lon},{box.top_right.lat}"
         page = 0
         count = 0
@@ -79,12 +90,18 @@ class SegmentService:
         
         file_path = dir_path / filename
         
-        logger.info(f"Downloading points for box {box_str}")
+        logger.info(f"📥 Downloading points for box {box_str} (max {max_pages} pages)")
         
         with open(file_path, "w") as file:
             while True:
+                # Safety check: limit number of pages
+                if max_pages and page >= max_pages:
+                    logger.warning(f"⚠️  Reached max pages limit ({max_pages}). Downloaded {count} points so far.")
+                    break
+                
                 url = f"https://api.openstreetmap.org/api/0.6/trackpoints?bbox={box_str}&page={page}"
                 try:
+                    logger.info(f"📥 Downloading page {page}... ({count} points so far)")
                     response = requests.get(url, timeout=30)
                     response.raise_for_status()
                     
@@ -92,6 +109,7 @@ class SegmentService:
                     gpx = gpxpy.parse(gpx_content)
                     
                     if len(gpx.tracks) == 0:
+                        logger.info(f"✅ No more tracks on page {page}. Download complete.")
                         break
                     
                     for t, track in enumerate(gpx.tracks):
@@ -103,13 +121,22 @@ class SegmentService:
                                         f"{p.latitude},{p.longitude},{p.time},{t},{page}\n"
                                     )
                                     count += 1
+                    
+                    # Log progress every 5 pages
+                    if page % 5 == 0 and page > 0:
+                        logger.info(f"📊 Progress: Page {page}, {count} points downloaded")
+                    
                     page += 1
                     
                 except requests.RequestException as e:
-                    logger.error(f"Error downloading page {page}: {e}")
+                    logger.error(f"❌ Error downloading page {page}: {e}")
                     break
         
-        logger.info(f"Downloaded {count} points to {file_path}")
+        logger.info(f"✅ Download complete: {count} points in {page} pages → {file_path}")
+        
+        # Warn if we downloaded too many points
+        if count > 500000:
+            logger.warning(f"⚠️  Downloaded {count} points - this is a LOT! Consider using a smaller bounding box.")
     
     def _load_points(self, box: BoxModel, filename: str) -> List[Tuple[float, float, datetime, int, int]]:
         """Load points from file, downloading if necessary"""
@@ -119,7 +146,7 @@ class SegmentService:
         
         if not file_path.exists():
             logger.info(f"Points file not found, downloading...")
-            self._download_points(box, filename)
+            self._download_points(box, filename, max_pages=self.max_download_pages)  # Use setting!
         
         try:
             with open(file_path, "r") as file:

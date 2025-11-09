@@ -124,8 +124,8 @@ class MonumentStorage:
             original_id = int(id_part)
             
             # Parse name and location
-            if ' – ' in name_part:
-                name, location = name_part.rsplit(' – ', 1)
+            if ' - ' in name_part:
+                name, location = name_part.rsplit(' - ', 1)
             elif ' / ' in name_part:
                 name, location = name_part.rsplit(' / ', 1)
             else:
@@ -340,12 +340,3 @@ class MonumentStorage:
 # - Data persistence and retrieval
 # - Database schema management
 # - Returns raw Dict[str, Any] data
-#
-# What this layer does NOT do:
-# - Business logic (handled by services/)
-# - API type mapping (handled by services/) 
-# - Data transformation to response models (handled by services/)
-# - HTTP request handling (handled by routers/)
-#
-# Service layer is in: services/monument_service.py
-# API endpoints are in: routers/monuments.py

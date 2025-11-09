@@ -10,6 +10,13 @@ from core.utils import get_logger
 from database.jobs import JobStorage
 from routers import monuments, routes, segments
 
+import uvicorn
+from datetime import datetime
+from models import HealthResponse
+from models import ApiInfoResponse
+
+
+
 # Initialize logger
 logger = get_logger("main")
 
@@ -44,7 +51,6 @@ app.include_router(segments.router, tags=["segments"])
 @app.get("/")
 async def root():
     """Root endpoint - API status"""
-    from models import ApiInfoResponse
     return ApiInfoResponse(
         message="TrailBlazer API is running!",
         version=API_CONFIG["version"],
@@ -55,22 +61,18 @@ async def root():
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    from datetime import datetime
-    from models import HealthResponse
     return HealthResponse(
         status="healthy",
         timestamp=datetime.now().isoformat()
     )
 
 if __name__ == "__main__":
-    import uvicorn
     logger.info("Starting TrailBlazer API server", extra={
         "host": "0.0.0.0",
         "port": 8000,
         "api_url": "http://localhost:8000",
         "docs_url": "http://localhost:8000/docs"
     })
-    
     uvicorn.run(
         app,
         host="0.0.0.0",

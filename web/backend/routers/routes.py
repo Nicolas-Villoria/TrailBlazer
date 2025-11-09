@@ -54,7 +54,7 @@ def process_route_calculation(
         
         logger.info(f"Job {job_id}: Starting route calculation")
         
-        # Step 1: Get segments (20% progress)
+        # Step 1: Get segments 
         logger.info(f"Job {job_id}: Downloading/loading segments")
         segments = segment_service.get_segments(search_box, "segments.txt")
         job_storage.update_job({
@@ -68,7 +68,7 @@ def process_route_calculation(
         if not segments:
             raise Exception("No segments found in the specified area")
         
-        # Step 2: Build graph (40% progress)
+        # Step 2: Build graph 
         logger.info(f"Job {job_id}: Building graph from {len(segments)} segments")
         graph = graph_service.make_graph(segments)
         graph = graph_service.simplify_graph(graph, epsilon=5.0)
@@ -80,7 +80,7 @@ def process_route_calculation(
             "error": None
         })
         
-        # Step 3: Get monuments (60% progress)
+        # Step 3: Get monuments
         logger.info(f"Job {job_id}: Getting monuments of type {monument_type}")
         monuments = monument_service.get_monuments_by_type_and_area(
             monument_type=monument_type,
@@ -100,7 +100,7 @@ def process_route_calculation(
         if not monuments:
             raise Exception(f"No monuments of type {monument_type} found in the area")
         
-        # Step 4: Calculate routes and export (90% progress)
+        # Step 4: Calculate routes and export 
         logger.info(f"Job {job_id}: Calculating routes to {len(monuments)} monuments")
         result = route_service.calculate_and_export(
             graph=graph,
@@ -117,7 +117,7 @@ def process_route_calculation(
             "error": None
         })
         
-        # Step 5: Complete (100% progress)
+        # Step 5: Complete job
         logger.info(f"Job {job_id}: Route calculation completed")
         job_storage.update_job({
             "job_id": job_id,
