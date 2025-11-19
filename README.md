@@ -2,9 +2,9 @@
 
 A trailblazer is someone who marks a trail through unexplored territory. In the spirit of these pioneers, you are about to start a journey through the beautiful lands of our country. Our application, TrailBlazer, will be your trusty guide, designed to help you uncover the shortest routes to our historical treasures. Whether you're a tourist eager to discover iconic monuments, a local seeking a rural adventure, or a history enthusiast, TrailBlazer is the perfect tool for you. So what are you waiting for? Start your adventure and become the pioneer of your own trail!
 
-**TrailBlazer** is a route-finding application that started as a college project to explore graph algorithms and geospatial data. From the original code, which can be found in the `skeleton/` directory, we are developing a modern web application with an interactive frontend and REST API backend. TrailBlazer combines real trail networks from OpenStreetMap with Catalunya's historical monument data to calculate optimal routes for explorers.
+**TrailBlazer** is a route-finding application that started as a college project to explore graph algorithms and geospatial data. From the original code, which can be found in the `skeleton/` directory, I am developing a modern web application with an interactive frontend and REST API backend. TrailBlazer combines real trail networks from OpenStreetMap with Catalunya's historical monument data to calculate optimal routes for explorers.
 
-## ✨ Features
+## Features
 
 - **Monument Discovery**: Browse military, religious, and civil historical buildings across Catalunya
 - **Real Trail Networks**: Uses actual hiking trails from OpenStreetMap data
@@ -366,4 +366,4 @@ For questions or issues:
 
 ---
 
-**Happy Trail Blazing!** 🥾⛰️🏰
+**Happy Hiking Trailblazer!** 
