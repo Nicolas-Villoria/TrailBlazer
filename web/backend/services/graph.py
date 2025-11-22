@@ -125,7 +125,7 @@ class GraphService:
         return degrees(acos(cos_angle))
     
     @staticmethod
-    def find_closest_node(graph: nx.Graph, point: PointModel) -> Tuple[float, float]:
+    def find_closest_node(graph: nx.Graph, point: PointModel) -> PointModel | None:
         """
         Find the closest graph node to a given point.
         
@@ -134,7 +134,7 @@ class GraphService:
             point: Target point
             
         Returns:
-            Closest node as (lat, lon) tuple
+            Closest node as (lat, lon) tuple or None if graph is empty
         """
         min_dist = float("inf")
         closest_node = None
@@ -153,9 +153,9 @@ class GraphService:
     @staticmethod
     def shortest_path(
         graph: nx.Graph, 
-        start: Tuple[float, float], 
-        end: Tuple[float, float]
-    ) -> Tuple[float, List[Tuple[float, float]]]:
+        start: PointModel, 
+        end: PointModel,
+    ) -> Tuple[float, List[PointModel]]:
         """
         Find shortest path between two nodes using Dijkstra's algorithm.
         

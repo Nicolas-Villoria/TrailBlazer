@@ -14,3 +14,4 @@ turfpy==0.0.7
 geojson==3.1.0
 pydantic==2.5.0
 python-jose==3.3.0
+numpy<2.0  # Required for numba compatibility with haversine

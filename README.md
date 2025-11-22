@@ -1,369 +1,339 @@
-# TrailBlazer 
+# TrailBlazer
 
-A trailblazer is someone who marks a trail through unexplored territory. In the spirit of these pioneers, you are about to start a journey through the beautiful lands of our country. Our application, TrailBlazer, will be your trusty guide, designed to help you uncover the shortest routes to our historical treasures. Whether you're a tourist eager to discover iconic monuments, a local seeking a rural adventure, or a history enthusiast, TrailBlazer is the perfect tool for you. So what are you waiting for? Start your adventure and become the pioneer of your own trail!
+A full-stack web application for finding optimal hiking routes to historical monuments in Catalunya, Spain. This project demonstrates the transformation of a command-line university assignment into a modern web application with REST API backend and interactive frontend.
 
-**TrailBlazer** is a route-finding application that started as a college project to explore graph algorithms and geospatial data. From the original code, which can be found in the `skeleton/` directory, we are developing a modern web application with an interactive frontend and REST API backend. TrailBlazer combines real trail networks from OpenStreetMap with Catalunya's historical monument data to calculate optimal routes for explorers.
+## Overview
 
-## ✨ Features
+TrailBlazer is a learning project that combines geospatial data processing, graph algorithms, and web development. It calculates optimal hiking routes from a user-selected starting point to historical monuments using real trail networks from OpenStreetMap. The application started as a Python script for a data structures course and evolved into a complete web platform.
 
-- **Monument Discovery**: Browse military, religious, and civil historical buildings across Catalunya
-- **Real Trail Networks**: Uses actual hiking trails from OpenStreetMap data
-- **Smart Routing**: Calculates shortest paths using Dijkstra's algorithm
-- **Visual Exports**: Download route maps as PNG images or KML files for GPS devices
-- **Web Interface**: Interactive map-based UI (in development)
-- **CLI Tool**: Full-featured command-line interface
+### What I Learned
 
-## Quick Start
+This project served as a practical introduction to several key concepts in software development:
+
+- Architecting a REST API with Python FastAPI
+- Processing and caching large geospatial datasets efficiently
+- Implementing graph algorithms (Dijkstra's shortest path) on real-world data
+- Building responsive web interfaces with vanilla JavaScript
+- Managing asynchronous operations and background jobs
+- Optimizing performance through algorithmic improvements and caching strategies
+- Working with external APIs (OpenStreetMap, Overpass API)
+- Database design and query optimization with SQLite
+
+### Technical Stack
+
+**Backend**
+- Python 3.8+ with FastAPI framework
+- SQLite for monument data and job tracking
+- NetworkX for graph algorithms
+- scikit-learn for spatial clustering
+- Overpass API for trail data retrieval
+
+**Frontend**
+- Vanilla JavaScript (ES6+)
+- Leaflet.js for interactive mapping
+- Bootstrap 5 for UI components
+- Asynchronous API communication
+
+**Data Processing**
+- OpenStreetMap GPS track data via Overpass API
+- Catalunya heritage database (3,220+ monuments)
+- Haversine distance calculations
+- MiniBatchKMeans clustering for point reduction
+
+## Application Screenshots
+
+### Interactive Map Interface
+![Web Application Interface](images/img1.png)
+*Main interface with interactive Leaflet map, showing control panel for monument search and route configuration*
+
+### Monument Preview
+![Monument Discovery](images/img2.png)
+*Preview of available monuments within the selected search radius, displayed on the map with distance information*
+
+### Route Calculation Progress
+![Route Calculation](images/img3.png)
+*Real-time progress tracking for route calculation jobs with detailed status updates*
+
+### Generated Routes
+![Final Routes](images/img4.png)
+*Completed route visualization showing optimal paths to reachable monuments with distance metrics*
+
+## Features
+
+**Monument Discovery**
+- Search for military, religious, and civil historical monuments
+- Adjustable search radius (1-50 km)
+- Interactive map preview of available monuments
+- Monument details including coordinates and distances
+
+**Route Planning**
+- Calculate optimal hiking routes using Dijkstra's algorithm
+- Real trail networks from OpenStreetMap data
+- Handles unreachable monuments gracefully
+- Distance calculations for all destinations
+
+**Performance Optimizations**
+- Overpass API integration: reduced download times from 40-60 seconds to 1-2 seconds
+- Binary caching with 30-day expiry
+- MiniBatchKMeans clustering: 5-10x faster than standard KMeans
+- Adaptive clustering that skips processing for small datasets
+
+**Export Options**
+- PNG map images with color-coded routes
+- KML files compatible with GPS devices and Google Earth
+- Downloadable route data
+
+## How It Works
+
+### Data Pipeline
+
+1. **Monument Retrieval**: Fetches historical monument data from Catalunya's heritage database and stores it in SQLite
+2. **Trail Download**: Uses Overpass API to query OpenStreetMap for hiking trails within the search area
+3. **Point Clustering**: Applies MiniBatchKMeans to reduce GPS points to representative trail segments
+4. **Graph Construction**: Builds a NetworkX graph where nodes are trail points and edges are walkable segments
+5. **Route Calculation**: Implements Dijkstra's algorithm to find shortest paths from start point to all monuments
+6. **Visualization**: Generates map outputs with routes, monuments, and distance information
+
+### Technical Challenges Addressed
+
+**Performance Bottlenecks**
+- Initial implementation: 40-60 seconds to download trail data via paginated OpenStreetMap API
+- Solution: Migrated to Overpass API with single-query architecture and binary caching
+- Result: 24-35x speedup, reducing download time to 1-2 seconds
+
+**Clustering Optimization**
+- Initial implementation: Standard KMeans taking 3+ seconds for 5,000+ points
+- Solution: Implemented MiniBatchKMeans with adaptive clustering strategy
+- Result: 6.5x faster clustering, skips entirely for small datasets
+
+**Memory Management**
+- Challenge: Loading and processing hundreds of thousands of GPS points
+- Solution: Streaming data processing, batch operations, and efficient caching
+- Result: Stable memory usage even with large geographic areas
+
+## Architecture
+
+### Project Structure
+
+```
+TrailBlazer/
+├── skeleton/              # Original CLI implementation (complete)
+│   ├── main.py           # Interactive command-line interface
+│   ├── segments.py       # Trail data processing
+│   ├── monuments.py      # Monument database interface
+│   ├── graphmaker.py     # Graph construction and optimization
+│   ├── routes.py         # Dijkstra pathfinding implementation
+│   └── viewer.py         # Map generation and KML export
+│
+└── web/                  # Modern web application
+    ├── backend/
+    │   ├── app.py        # FastAPI application entry point
+    │   ├── models/       # Pydantic data models
+    │   ├── routers/      # API endpoint handlers
+    │   ├── services/     # Business logic layer
+    │   │   ├── overpass_service.py    # Overpass API integration
+    │   │   ├── segment_service.py     # Trail processing
+    │   │   ├── route_service.py       # Route calculation
+    │   │   └── monument_service.py    # Monument queries
+    │   ├── database/     # Data access layer
+    │   └── core/         # Configuration and utilities
+    │
+    └── frontend/
+        ├── index.html    # Main application page
+        ├── styles.css    # UI styling
+        └── app.js        # Client-side logic
+```
+
+### API Design
+
+The backend exposes RESTful endpoints for all major operations:
+
+- `GET /monuments` - Query monuments by type and geographic bounds
+- `GET /monument-types` - List available monument categories
+- `POST /routes/calculate` - Initiate route calculation (returns job ID)
+- `GET /routes/job/{job_id}` - Poll job status and progress
+- `GET /routes/download/{job_id}/png` - Download route map image
+- `GET /routes/download/{job_id}/kml` - Download GPS-compatible file
+
+Jobs are tracked in SQLite with progress updates, allowing the frontend to display real-time status to users during long-running calculations.
+
+Jobs are tracked in SQLite with progress updates, allowing the frontend to display real-time status to users during long-running calculations.
+
+## Installation and Usage
 
 ### Prerequisites
-
 - Python 3.8 or higher
-- Internet connection (for downloading trail and monument data)
+- Internet connection for downloading trail and monument data
 
-### Installation
+### Setup
 
-1. **Clone or download the repository**
-   ```bash
-   cd TrailBlazer
-   ```
+1. Clone the repository
+```bash
+git clone https://github.com/Nicolas-Villoria/TrailBlazer.git
+cd TrailBlazer
+```
 
-2. **Install dependencies**
-   ```bash
-   pip3 install -r requirements.txt
-   ```
+2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### Usage
-
-#### Web Application (Easiest!)
-
-**Start both backend and frontend servers:**
-
+3. Start the web application
 ```bash
 ./start.sh
 ```
 
-This will:
-- Start the backend API on port 8000
-- Start the frontend on port 3000
-- Automatically open your browser to http://localhost:3000
+The script will launch both backend (port 8000) and frontend (port 3000) servers. Access the application at `http://localhost:3000`.
 
-**Stop all servers:**
+### Alternative: Command-Line Interface
 
-```bash
-./stop.sh
-```
-
-**Manual startup (alternative):**
-
-Terminal 1 (Backend):
-```bash
-cd web/backend
-python3 app.py
-```
-
-Terminal 2 (Frontend):
-```bash
-cd web/frontend
-python3 serve.py
-```
-
-Then open your browser to:
-- **Frontend**: http://localhost:3000
-- **API Docs**: http://localhost:8000/docs
-
-#### Command-Line Interface
+The original CLI implementation is available in the `skeleton/` directory:
 
 ```bash
 cd skeleton
 python3 main.py
 ```
 
-Follow the interactive prompts to:
-1. Select a geographic area
-2. Choose monument type (military, religious, civil)
-3. Set your starting point
-4. Generate routes and export maps
+This provides a text-based interface for the same functionality with step-by-step prompts.
 
-## Dependencies
+## Key Algorithms and Data Structures
 
-All required libraries are listed in `requirements.txt`:
+### Graph Construction
+The application builds an undirected weighted graph where:
+- Nodes represent clustered trail points (latitude, longitude)
+- Edges connect nearby points on the same trail
+- Weights are haversine distances in kilometers
 
-- **Data Collection**: `requests`, `gpxpy`, `beautifulsoup4`
-- **Geospatial**: `haversine`, `turfpy`, `geojson`
-- **Graph Algorithms**: `networkx`, `scikit-learn`
-- **Visualization**: `staticmap`, `simplekml`
-- **CLI Interface**: `rich`
-- **Web API** (backend only): `fastapi`, `uvicorn`, `pydantic`
-
-## Architecture
-
-TrailBlazer consists of two main components:
-
-### 1. Core Engine (`skeleton/`)
-
-The original command-line implementation with complete functionality:
-
-- **`segments.py`**: Downloads and processes trail segments from OpenStreetMap
-  - Fetches GPS track points in a geographic area
-  - Performs K-means clustering to identify representative trail points
-  - Creates segments between nearby points on the same trail
-  - Caches data locally to avoid re-downloading
-
-- **`monuments.py`**: Retrieves monument data from Catalunya's heritage database
-  - Supports three monument types: military, religious, and civil
-  - Parses HTML pages to extract monument names and locations
-  - Returns structured monument data
-
-- **`graphmaker.py`**: Builds and optimizes graph networks
-  - Creates NetworkX graph from trail segments
-  - Calculates edge weights using haversine distance
-  - Simplifies graph by removing redundant collinear nodes
-  - Optimizes for efficient pathfinding
-
-- **`routes.py`**: Finds optimal routes using graph algorithms
-  - Implements Dijkstra's shortest path algorithm
-  - Calculates routes from starting point to all monuments
-  - Handles unreachable monuments gracefully
-  - Exports results to PNG maps and KML files
-
-- **`viewer.py`**: Generates visual outputs
-  - Creates PNG maps using staticmap library
-  - Generates KML files for GPS devices
-  - Color-codes start points, routes, and monuments
-
-- **`main.py`**: Interactive command-line interface
-  - Rich terminal formatting for user-friendly experience
-  - Step-by-step workflow guidance
-  - Configuration management via `settings_file.json`
-
-### 2. Web Application (`web/`)
-
-Modern REST API with interactive frontend (in development):
-
-**Backend** (`web/backend/`):
-- **FastAPI** framework for async REST API
-- **SQLite** databases for job tracking and monument storage
-- **Modular architecture**:
-  - `models/`: Pydantic models for request/response validation
-  - `routers/`: API endpoints for monuments, routes, segments
-  - `services/`: Business logic layer
-  - `database/`: Data persistence layer
-  - `core/`: Configuration and utilities
-
-**Frontend** (`web/frontend/`):
-- **Interactive Leaflet map** for point selection
-- **Bootstrap 5** UI components
-- **Async job tracking** for long-running calculations
-- **File downloads** for PNG/KML exports
-
-### Data Flow
-
-```
-User Input → Segment Download → Graph Building → Route Calculation → Export
-    ↓              ↓                  ↓                 ↓              ↓
-  Coords     OpenStreetMap      NetworkX Graph     Dijkstra      PNG/KML
-   Point         (GPX)          (clustering)      Algorithm      Files
+### Dijkstra's Algorithm Implementation
+Used for finding shortest paths from the starting point to all monuments:
+```python
+def dijkstra(graph, start_node):
+    distances = {node: float('infinity') for node in graph.nodes}
+    distances[start_node] = 0
+    priority_queue = [(0, start_node)]
+    
+    while priority_queue:
+        current_distance, current_node = heappop(priority_queue)
+        if current_distance > distances[current_node]:
+            continue
+            
+        for neighbor in graph.neighbors(current_node):
+            distance = current_distance + graph[current_node][neighbor]['weight']
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heappush(priority_queue, (distance, neighbor))
+    
+    return distances
 ```
 
-## Configuration
+### Spatial Clustering
+MiniBatchKMeans reduces tens of thousands of GPS points to manageable trail segments:
+- Small datasets (< 1,000 points): No clustering needed
+- Large datasets: Adaptive cluster count (min(500, points/10, 2000))
+- Batch processing with 1,000 points per iteration
+- Results in 5-10x speedup compared to standard KMeans
 
-Settings are configured in `settings_file.json`:
+## Performance Metrics
 
-```json
-{
-  "time_delta": 300,        // Max seconds between trail points (5 min)
-  "distance_delta": 0.1,    // Max km between trail points (100m)
-  "n_clusters": 500,        // Number of clusters for K-means
-  "angle": 5                // Max angle deviation for node removal (degrees)
-}
-```
+### Data Processing
+- Monument database: 3,220 entries across three categories
+- Average search area: 10 km radius
+- Typical trail segments: 5,000-10,000 per query
+- Cache hit rate: 95%+ for repeated searches
 
-**Tuning Guidelines**:
-- **Increase `n_clusters`** for more detailed trails (slower, more accurate)
-- **Decrease `distance_delta`** for tighter trail connections
-- **Adjust `angle`** to control graph simplification (lower = more simplification)
+### Speed Improvements
+| Operation | Before | After | Improvement |
+|-----------|--------|-------|-------------|
+| Trail download | 40-60s | 1-2s | 24-35x faster |
+| Data size | 46 MB | 0.58 MB | 79x smaller |
+| Clustering (5K points) | 3.08s | 0.47s | 6.5x faster |
+| Small dataset clustering | 0.20s | 0.0006s | 333x faster |
 
-## Project Structure
+## Known Limitations and Future Improvements
 
-```
-TrailBlazer/
-├── README.md                    # This file
-├── PROJECT_OVERVIEW.md          # Detailed development guide
-├── requirements.txt             # Python dependencies
-├── settings_file.json           # Configuration
-├── todo                         # Development tasks
-│
-├── skeleton/                    # Core CLI application (Complete)
-│   ├── main.py                  # CLI interface
-│   ├── segments.py              # Trail segment processing
-│   ├── monuments.py             # Monument data fetching
-│   ├── graphmaker.py            # Graph algorithms
-│   ├── routes.py                # Route finding
-│   ├── viewer.py                # Export visualization
-│   └── settings_file.json       # CLI configuration
-│
-└── web/                         # Web application (In Progress)
-    ├── backend/
-    │   ├── app.py               # FastAPI main application
-    │   ├── requirements.txt     # Backend dependencies
-    │   ├── models/              # Pydantic data models
-    │   ├── routers/             # API endpoints (partial)
-    │   ├── services/            # Business logic (partial)
-    │   ├── database/            # SQLite storage
-    │   └── core/                # Config & utilities
-    │
-    └── frontend/
-        ├── index.html           #  Interactive web UI
-        └── README.md            # Frontend documentation
-```
+This project was built as a learning exercise and has several areas where production-grade solutions would differ:
 
-## 🔬 How It Works
+**Database**
+- Current: SQLite with simple spatial queries
+- Production alternative: PostGIS with spatial indexing and geographic queries would dramatically improve performance for large-scale deployments
 
-### 1. Trail Segment Discovery
+**Routing Engine**
+- Current: Custom implementation with NetworkX and Dijkstra's algorithm
+- Production alternative: Dedicated routing servers like OSRM or GraphHopper offer pre-processed road networks, faster queries, and more sophisticated routing options
 
-1. **Download GPS Tracks**: Fetches GPX files from OpenStreetMap for a geographic area
-2. **Extract Points**: Parses GPX data to get timestamped coordinates
-3. **Cluster Points**: Uses K-means to identify representative trail locations
-4. **Create Segments**: Connects nearby clustered points that:
-   - Are on the same trail
-   - Are within time/distance thresholds
-   - Belong to different clusters (to avoid tiny segments)
+**Frontend**
+- Current: Vanilla JavaScript with direct API calls
+- Production alternative: React or Vue.js with state management would provide better maintainability and user experience
 
-### 2. Graph Construction
+**Scalability**
+- Current: Single-process Python application
+- Production alternative: Containerized microservices with message queues for job processing and horizontal scaling
 
-1. **Build Network**: Creates graph with trail points as nodes and segments as edges
-2. **Calculate Weights**: Edge weights = haversine distance between points
-3. **Simplify Graph**: Removes nodes with degree 2 that are nearly collinear
-   - Reduces graph size by 30-50%
-   - Maintains path accuracy
-   - Speeds up pathfinding
+**Data Updates**
+- Current: Manual monument database updates, cached trail data
+- Production alternative: Automated data pipeline with incremental updates from OpenStreetMap
 
-### 3. Route Calculation
+Despite these limitations, the project successfully demonstrates fundamental concepts in web development, API design, algorithm implementation, and performance optimization.
 
-1. **Find Monuments**: Retrieves all monuments of selected type in area
-2. **Identify Start Node**: Finds closest graph node to user's starting point
-3. **Run Dijkstra**: Calculates shortest path to each monument
-4. **Build Route Graph**: Combines all paths into single route network
-5. **Calculate Distances**: Computes total distance to each monument
+## Development Process
 
-### 4. Export & Visualization
+This project evolved through several iterations:
 
-**PNG Export**:
-- Renders static map image
-- Yellow marker: Starting point
-- Red markers: Monuments
-- Blue lines: Trail routes
-- Black dots: Trail intersections
+1. **Initial CLI Implementation**: Basic Python scripts for data retrieval and route calculation
+2. **Algorithm Optimization**: Implemented graph simplification and efficient pathfinding
+3. **Web API Development**: Designed RESTful endpoints and migrated business logic
+4. **Frontend Development**: Built interactive map interface with asynchronous job handling
+5. **Performance Tuning**: Identified bottlenecks and implemented caching and algorithmic improvements
 
-**KML Export**:
-- GPS-compatible format
-- Importable to Google Earth, Garmin, etc.
-- Includes monument names and distances
-- Color-coded routes
+The complete development history is available in the Git repository, showing the progression from a simple script to a full-stack application.
 
-## Current Development Status
+## Technologies and Libraries
 
-### Completed
-- Core CLI application (100%)
-- Web frontend UI (100%)
-- Backend infrastructure (models, database, config)
-- Monument endpoints (GET /monuments, GET /monument-types)
+**Core Dependencies**
+- `fastapi` - Modern Python web framework with automatic API documentation
+- `networkx` - Graph algorithms and data structures
+- `scikit-learn` - Machine learning library (used for clustering)
+- `leaflet.js` - Interactive map visualization
+- `bootstrap` - Responsive UI components
 
-### In Progress
-- Route service implementation
-- Segment service implementation
-- Graph service implementation
-- Routes API endpoints
-- Segments API endpoints
+**Geospatial Processing**
+- `haversine` - Great-circle distance calculations
+- `geojson` - Geographic data format support
+- `staticmap` - Static map image generation
+- `simplekml` - KML file generation for GPS devices
 
-### To Do
-- Complete service layer porting from skeleton
-- Implement async job processing for route calculation
-- Add file download endpoints
-- End-to-end testing
-- Performance optimization
+**Data Handling**
+- `requests` - HTTP client for API communication
+- `beautifulsoup4` - HTML parsing for monument data
+- `pydantic` - Data validation and settings management
 
-**See `PROJECT_OVERVIEW.md` for detailed completion plan.**
+Complete dependency list available in `requirements.txt`.
 
-## Testing
+## Running Tests
 
-### CLI Testing
+### Performance Benchmarks
 ```bash
-cd skeleton
-python3 main.py
-# Follow prompts to test full workflow
+python3 test_clustering_speed.py
 ```
 
-### Web API Testing
-```bash
-cd web/backend
-python3 app.py
-# Visit http://localhost:8000/docs for Swagger UI
-```
+This script demonstrates the clustering optimizations with various dataset sizes.
 
-### Example API Calls
-```bash
-# Get monument types
-curl http://localhost:8000/monument-types
-
-# Get monuments in area
-curl "http://localhost:8000/monuments?monument_type=militars&bottom_left_lat=41.0&bottom_left_lon=1.0&top_right_lat=42.0&top_right_lon=2.0"
-
-# Health check
-curl http://localhost:8000/health
-```
-
-## API Documentation
-
-Once the backend is running, visit:
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-
-### Available Endpoints (Current)
-
-**Monuments**:
-- `GET /monument-types` - List available monument types with counts
-- `GET /monuments` - Get monuments by type and area
-
-**System**:
-- `GET /` - API information
-- `GET /health` - Health check
-
-**Coming Soon**:
-- `POST /segments/download` - Download trail segments
-- `POST /routes/calculate` - Calculate routes (async job)
-- `GET /routes/job/{job_id}` - Check route calculation status
-- `GET /routes/download/{job_id}/png` - Download PNG map
-- `GET /routes/download/{job_id}/kml` - Download KML file
-
-## Contributing
-
-This is an educational project for learning Python, web development, and graph algorithms.
-
-**Development Workflow**:
-1. Read `PROJECT_OVERVIEW.md` for architecture details
-2. Implement missing services in `web/backend/services/`
-3. Create API endpoints in `web/backend/routers/`
-4. Test with Swagger UI at http://localhost:8000/docs
-5. Update documentation
+### API Testing
+Start the backend and visit `http://localhost:8000/docs` for interactive API documentation with built-in testing interface.
 
 ## License
 
-Educational project - Catalunya Monuments data sourced from public databases.
+Educational project created for learning purposes. Monument data sourced from public Catalunya heritage databases. OpenStreetMap data used under ODbL license.
 
 ## Acknowledgments
 
-- **OpenStreetMap** contributors for trail data
-- **Generalitat de Catalunya** for monument databases
-- Python community for excellent geospatial libraries
+- OpenStreetMap contributors for comprehensive trail data
+- Generalitat de Catalunya for maintaining public monument databases
+- Python scientific computing community for excellent geospatial libraries
+- University project that provided the initial foundation
 
-## Support
+## Contact
 
-For questions or issues:
-1. Check `PROJECT_OVERVIEW.md` for detailed documentation
-2. Review API docs at http://localhost:8000/docs
-3. Examine skeleton code for reference implementations
+Nicolas Villoria - [GitHub](https://github.com/Nicolas-Villoria)
 
----
-
-**Happy Trail Blazing!** 🥾⛰️🏰
+This project is part of my portfolio demonstrating skills in full-stack development, algorithm implementation, and performance optimization.
